@@ -102,8 +102,23 @@ newUL.append(...newLIArray);
 function show() {
     //Create a new div
     const newDiv = document.createElement("div");
-    //Modify
-    newDiv.textContent = "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user";
+    const modalCard = document.createElement("div");
+    const modalPara = document.createElement("p");
+    const closeButton = document.createElement("button");
+        //Modify
+    modalCard.classList.add("modal-card");
+    modalPara.textContent = "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user";
+    closeButton.textContent = "X"
+    closeButton.classList.add("close-button")
+    newDiv.id = "modal"
+    closeButton.addEventListener("click", ()=>{
+        newDiv.remove();
+    });
     //Append the new div
     document.querySelector(".exercise5").append(newDiv);
+    newDiv.append(modalCard);
+    modalCard.append(closeButton, modalPara);
 }
+
+const modalButton = document.querySelector("#btn");
+modalButton.addEventListener("click", show);
